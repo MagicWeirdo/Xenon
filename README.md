@@ -13,9 +13,6 @@ on RESTful backend with static file & template file serve features.
      |- services // services definitions
      |- middlewares // middleware definitions
   |- config
-     |- route.js // routes configuration
-     |- model.js // models configuration
-     |- service.js // service configuration
      |- local.js development environment configuration file
      |- xenonsrc.js production environment configuration file
   |- templates // templates
@@ -40,29 +37,81 @@ on RESTful backend with static file & template file serve features.
 
 ## Configuration Overview
 
-### route.js
+### local.js
 
-module.exports = [
-  {
-    method: "POST",
-    pattern: \/api\/login,
-    action: UserController.login,
-    services: [
-      "LoginService",
-    ]
+```sh
+module.exports = {
+  BASE_PATH: __dirname,
+  HOST_NAME: "127.0.0.1",
+  PORT: 80,
+  MIDDLEWARES: [
+    "RestfulMiddleware",
+    "UtilsMiddleware"
+  ],
+  ACTIONS: [
+    {
+      method: "POST",
+      pattern: /\/api\/login/g,
+      action: "UserController.login",
+      services: [
+        "LoginService"
+      ]
+    }
+  ],
+  MODEL: [
+    {name: "UserModel"},
+    {name: "ApiKeyModel"}
+  ],
+  SERVICE: [
+    {
+      name: "LoginService",
+      models: {
+        "UserModel",
+        "ApiKeyModel"
+      }
+    }
+  ]
+};
+```
+
+## Action Definition
+
+```sh
+module.exports = {
+  "login": (data, args) => {
+    var loginService = args["LoginService"];
+    return loginService.login(data);
   }
-];
+};
+```
 
-### model.js
+## Service Definition
 
-module.exports = [
-  {name: "UserModel"}
-];
-
-### service.js
-
-module.exports = [
-  {
-
+```sh
+class LoginService {
+  constructor(args) {
+    this._userModel = args["UserModel"];
+    this._apiKeyModel = args["ApiKeyModel"];
   }
-];
+
+  //...
+
+  login(data) {
+    // do something
+  }
+}
+
+module.exports = LoginService;
+```
+
+## Model Definition
+
+```sh
+class UserModel extends Model {
+  constructor() {
+    super();
+  }
+
+  //...
+}
+```
