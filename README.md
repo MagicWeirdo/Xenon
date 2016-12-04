@@ -13,8 +13,7 @@ on RESTful backend with static file & template file serve features.
      |- services // services definitions
      |- middlewares // middleware definitions
   |- config
-     |- local.js development environment configuration file
-     |- xenonsrc.js production environment configuration file
+     |- settings.js // configuration file
   |- templates // templates
   |- statics // static files
   |- node_modules // dependencies
@@ -25,19 +24,15 @@ on RESTful backend with static file & template file serve features.
 
 ## What The Framework Wants To Achieve
 
-- RESTful feature. All requests except requests for static files and templates
-  are transformed into JSON, and response too.
-- Separate of concern. You don't have to worry about how to serve your static
-  contents, which are all done in Xenon.js by writing a short configuration
-  snippet. You just need to focus on how to design your RESTful APIs and leave
-  the frontend to those who are responsible.
-- Support both development and production configuration files
-- Cluster
-- ORM
+- RESTful feature. All requests except requests for static files and
+  templates are transformed into JSON, and response too.
+- Separate of concern. You don't have to worry about how to serve your  
+  static contents, which are all done in Xenon.js by writing a short configuration snippet. You just need to focus on how to design your RESTful APIs and leave the frontend to those who are responsible.
+- models & services can be load by using ModelLoader & ServiceLoader
 
 ## Configuration Overview
 
-### local.js
+### settings.js
 
 ```sh
 module.exports = {
@@ -52,10 +47,7 @@ module.exports = {
     {
       method: "POST",
       pattern: /\/api\/login/g,
-      action: "UserController.login",
-      services: [
-        "LoginService"
-      ]
+      name: "UserController.login",
     }
   ],
   MODEL: [
@@ -63,15 +55,18 @@ module.exports = {
     {name: "ApiKeyModel"}
   ],
   SERVICE: [
-    {
-      name: "LoginService",
-      models: {
-        "UserModel",
-        "ApiKeyModel"
-      }
-    }
+    {name: "LoginService"},
+    {name: "ApiKeyService"}
   ]
 };
+```
+
+## Middleware Definition
+
+```sh
+module.exports = (req ,res) => {
+  // do something
+}
 ```
 
 ## Action Definition
