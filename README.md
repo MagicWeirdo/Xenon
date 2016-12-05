@@ -23,8 +23,8 @@ on RESTful backend with static file & template file serve features.
 
 ## What The Framework Wants To Achieve
 
-- RESTful feature. All requests except requests for static files and
-  templates are transformed into JSON, and response too.
+- RESTful feature. All requests, except requests for static files and
+  templates, are transformed into JSON, and response too.
 - Separate of concern. You don't have to worry about how to serve your  
   static contents, which are all done in Xenon.js by writing a short configuration snippet. You just need to focus on how to design your RESTful APIs and leave the frontend to those who are responsible.
 - models & services can be load by using ModelLoader & ServiceLoader
@@ -77,9 +77,8 @@ module.exports = (req ,res) => {
 
 ```sh
 module.exports = {
-  "login": (data, pathVars) => {
-    var loginService = args["LoginService"];
-    return loginService.login(data);
+  "login": (data) => {
+    // do something
   }
 };
 ```
@@ -88,9 +87,8 @@ module.exports = {
 
 ```sh
 class LoginService {
-  constructor(args) {
-    this._userModel = args["UserModel"];
-    this._apiKeyModel = args["ApiKeyModel"];
+  constructor() {
+    // do something
   }
 
   //...
@@ -106,7 +104,7 @@ module.exports = LoginService;
 ## Model Definition
 
 ```sh
-class UserModel extends Model {
+class UserModel {
   constructor() {
     super();
   }
