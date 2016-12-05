@@ -14,8 +14,7 @@ on RESTful backend with static file & template file serve features.
      |- middlewares // middleware definitions
   |- config
      |- settings.js // configuration file
-  |- templates // templates
-  |- statics // static files
+  |- files // where you place files
   |- node_modules // dependencies
   |- package.json // project definition
   |- README.md // project introduction
@@ -46,7 +45,7 @@ module.exports = {
   ACTIONS: [
     {
       method: "POST",
-      pattern: /\/api\/login/g,
+      pattern: /\/api\/login/,
       name: "UserController.login",
     }
   ],
@@ -57,6 +56,11 @@ module.exports = {
   SERVICE: [
     {name: "LoginService"},
     {name: "ApiKeyService"}
+  ],
+  FILE: [
+    {pattern: /\//g, filePath: "template/index.html"},
+    {pattern: /\/static\/css\/style\.css/g, filePath: "css/style.css"},
+    {pattern: /\/static\/js\/app.js/g, filePath: "js/app.js"}
   ]
 };
 ```
