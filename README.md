@@ -77,7 +77,7 @@ module.exports = (req ,res) => {
 
 ```sh
 module.exports = {
-  "login": (data, args) => {
+  "login": (data, pathVars) => {
     var loginService = args["LoginService"];
     return loginService.login(data);
   }
