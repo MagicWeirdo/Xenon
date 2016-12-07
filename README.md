@@ -35,7 +35,7 @@ on RESTful backend with static file & template file serve features.
 
 ```sh
 module.exports = {
-  BASE_PATH: __dirname,
+  BASE_PATH: "..."
   HOST_NAME: "127.0.0.1",
   PORT: 80,
   MIDDLEWARES: [
