@@ -10,5 +10,8 @@
     "xenon"
   ],
   "author": "Oliver Hsu",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.12.0"
+  }
 }
