@@ -67,10 +67,12 @@ module.exports = {
   ],
   SERVICES: [
     {
+      scope: "singleton"
       name: "$loginService",
       factory: "LoginService"
     },
     {
+      scope: "singleton"
       name: "$apiKeyService",
       factory: "ApiKeyService"
     }

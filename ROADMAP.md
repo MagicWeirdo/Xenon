@@ -2,7 +2,4 @@
 
 ## To-do List
 
-- [Action] An Action with Service loaded
-- [MiddewareLoader]
-- [Model] 
-- [Service]
+- add scope feature to dependency injection: singleton, prototype, session 
