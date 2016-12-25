@@ -49,18 +49,39 @@ module.exports = {
       name: "UserController.login",
     }
   ],
-  MODEL: [
-    {name: "UserModel"},
-    {name: "ApiKeyModel"}
+  MODELS: [
+    {
+      name: "$userModel",
+      factory: "UserModel"
+    },
+    {
+      name: "$apiKeyModel",
+      factory: "ApiKeyModel"
+    }
   ],
-  SERVICE: [
-    {name: "LoginService"},
-    {name: "ApiKeyService"}
+  SERVICES: [
+    {
+      name: "$loginService",
+      factory: "LoginService"
+    },
+    {
+      name: "$apiKeyService",
+      factory: "ApiKeyService"
+    }
   ],
-  FILE: [
-    {pattern: /\//g, filePath: "template/index.html"},
-    {pattern: /\/static\/css\/style\.css/g, filePath: "css/style.css"},
-    {pattern: /\/static\/js\/app.js/g, filePath: "js/app.js"}
+  FILES: [
+    {
+      pattern: /\//g,
+      filePath: "template/index.html"
+    },
+    {
+      pattern: /\/static\/css\/style\.css/g,
+      filePath: "css/style.css"
+    },
+    {
+      pattern: /\/static\/js\/app.js/g,
+      filePath: "js/app.js"
+    }
   ]
 };
 ```
@@ -68,7 +89,7 @@ module.exports = {
 ## Middleware Definition
 
 ```sh
-module.exports = (req ,res) => {
+module.exports = function ($log, req ,res) => {
   // do something
 }
 ```
@@ -77,7 +98,7 @@ module.exports = (req ,res) => {
 
 ```sh
 module.exports = {
-  "login": (data) => {
+  "login": ($apiKeyService, req, res) => {
     // do something
   }
 };
@@ -86,29 +107,15 @@ module.exports = {
 ## Service Definition
 
 ```sh
-class LoginService {
-  constructor() {
-    // do something
-  }
-
-  //...
-
-  login(data) {
-    // do something
-  }
+module.exports = function ($userModel) {
+  // return object
 }
-
-module.exports = LoginService;
 ```
 
 ## Model Definition
 
 ```sh
-class UserModel {
-  constructor() {
-    super();
-  }
-
-  //...
+module.exports = function () {
+  // return object
 }
 ```
