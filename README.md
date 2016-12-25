@@ -38,6 +38,13 @@ module.exports = {
   BASE_PATH: "..."
   HOST_NAME: "127.0.0.1",
   PORT: 80,
+  DATABASE: {
+    DRIVER: "mysql",
+    HOST: "127.0.0.0",
+    USER: "xxx",
+    PASSWORD: "xxx",
+    DATABASE: "xxx"
+  },
   MIDDLEWARES: [
     "RestfulMiddleware",
     "UtilsMiddleware"
