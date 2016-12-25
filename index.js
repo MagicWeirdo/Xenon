@@ -1,10 +1,5 @@
 const App = require("./lib/App");
-const DatabaseProxy = require("./lib/db/DatabaseProxy")
 
-exports.App = () => {
+module.exports = function() {
   return new App();
-};
-
-exports.DatabaseProxy = () => {
-  return new DatabaseProxy();
 };
