@@ -13,7 +13,7 @@ on RESTful backend with static file & template file serve features.
      |- services // services definitions
      |- middlewares // middleware definitions
   |- config
-     |- settings.js // configuration file
+     |- setting.js // configuration file
   |- files // where you place files
   |- node_modules // dependencies
   |- package.json // project definition
@@ -35,61 +35,34 @@ on RESTful backend with static file & template file serve features.
 
 ```sh
 module.exports = {
-  HOST_NAME: "127.0.0.1",
-  PORT: 80,
-  DATABASE: {
-    DRIVER: "mysql",
-    HOST: "127.0.0.0",
-    USER: "xxx",
-    PASSWORD: "xxx",
-    DATABASE: "xxx"
+  hostname: "127.0.0.1",
+  port: 80,
+  database: {
+    driver: "mysql",
+    host: "127.0.0.0",
+    user: "xxx",
+    password: "xxx",
+    database: "xxx"
   },
-  MIDDLEWARES: [
-    "RestfulMiddleware",
-    "UtilsMiddleware"
+  middleware: [
+    {name: "RestfulMiddleware"},
+    {name: "UtilsMiddleware"}
   ],
-  ACTIONS: [
-    {
-      method: "POST",
-      pattern: /\/api\/login/,
-      name: "UserController.login",
-    }
+  actions: [
+    { method: "POST", url: "/api/login", action: "UserController.login" }
   ],
-  MODELS: [
-    {
-      name: "$userModel",
-      factory: "UserModel"
-    },
-    {
-      name: "$apiKeyModel",
-      factory: "ApiKeyModel"
-    }
+  models: [
+    { name: "$userModel", factory: "UserModel" },
+    { name: "$apiKeyModel", factory: "ApiKeyModel" }
   ],
-  SERVICES: [
-    {
-      scope: "singleton"
-      name: "$loginService",
-      factory: "LoginService"
-    },
-    {
-      scope: "singleton"
-      name: "$apiKeyService",
-      factory: "ApiKeyService"
-    }
+  services: [
+    { scope: "singleton", name: "$loginService", factory: "LoginService" },
+    { scope: "singleton", name: "$apiKeyService", factory: "ApiKeyService" }
   ],
-  FILES: [
-    {
-      pattern: /\//g,
-      filePath: "template/index.html"
-    },
-    {
-      pattern: /\/static\/css\/style\.css/g,
-      filePath: "css/style.css"
-    },
-    {
-      pattern: /\/static\/js\/app.js/g,
-      filePath: "js/app.js"
-    }
+  files: [
+    { pattern: /\//g, filePath: "template/index.html" },
+    { pattern: /\/static\/css\/style\.css/g, filePath: "css/style.css" },
+    { pattern: /\/static\/js\/app.js/g, filePath: "js/app.js" }
   ]
 };
 ```

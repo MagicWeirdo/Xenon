@@ -1,5 +1,5 @@
-const App = require("./lib/App");
+const xenon = require("./lib/xenon");
 
 module.exports = function() {
-  return new App();
+  return xenon;
 };
