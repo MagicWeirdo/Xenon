@@ -60,9 +60,9 @@ module.exports = {
     { scope: "singleton", name: "$apiKeyService", factory: "ApiKeyService" }
   ],
   files: [
-    { pattern: /\//g, filePath: "template/index.html" },
-    { pattern: /\/static\/css\/style\.css/g, filePath: "css/style.css" },
-    { pattern: /\/static\/js\/app.js/g, filePath: "js/app.js" }
+    { url: "/", filePath: "template/index.html" },
+    { url: "/static/css/style.css", filePath: "css/style.css" },
+    { url: "/static/js/app.js", filePath: "js/app.js" }
   ]
 };
 ```
