@@ -1,6 +1,6 @@
 {
   "name": "xenon",
-  "version": "3.2.0",
+  "version": "3.2.2",
   "description": "A Node.js based lightweight web framework",
   "main": "index.js",
   "scripts": {
