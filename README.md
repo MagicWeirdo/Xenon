@@ -52,12 +52,12 @@ module.exports = {
     { method: "POST", url: "/api/login", action: "UserController.login" }
   ],
   models: [
-    { name: "$userModel", factory: "UserModel" },
-    { name: "$apiKeyModel", factory: "ApiKeyModel" }
+    { name: "$userModel" },
+    { name: "$apiKeyModel" }
   ],
   services: [
-    { scope: "singleton", name: "$loginService", factory: "LoginService" },
-    { scope: "singleton", name: "$apiKeyService", factory: "ApiKeyService" }
+    { scope: "singleton", name: "$loginService" },
+    { scope: "singleton", name: "$apiKeyService" }
   ],
   files: [
     { url: "/", filePath: "template/index.html" },
