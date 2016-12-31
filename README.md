@@ -8,17 +8,17 @@ on RESTful backend with static file & template file serve features.
 ```sh
 |-app
   |- api
-     |- controllers // controller definitions
-     |- models // model definitions
-     |- services // services definitions
-     |- middlewares // middleware definitions
+     |- controllers
+     |- models
+     |- services
+     |- middlewares
   |- config
-     |- setting.js // configuration file
-  |- files // where you place files
-  |- node_modules // dependencies
-  |- package.json // project definition
-  |- README.md // project introduction
-  |- app.js //
+     |- setting.js
+  |- files
+  |- node_modules
+  |- package.json
+  |- README.md
+  |- app.js
 ```
 
 ## What The Framework Wants To Achieve
