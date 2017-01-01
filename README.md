@@ -96,7 +96,7 @@ module.exports = function ($userModel) {
 ## Model Definition
 
 ```sh
-module.exports = function () {
-  // return object
+module.exports = function ($mysql) {
+  #statements
 }
 ```
