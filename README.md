@@ -35,6 +35,7 @@ on RESTful backend with static file & template file serve features.
 
 ```sh
 module.exports = {
+  debug: true,
   hostname: "127.0.0.1",
   port: 80,
   database: {
