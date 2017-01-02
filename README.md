@@ -48,9 +48,9 @@ module.exports = {
     database: "xxx"
   },
   static_root: "/static/",
-  middleware: [
-    {name: "RestfulMiddleware"},
-    {name: "UtilsMiddleware"}
+  middlewares: [
+    "$restfulMiddleware",
+    "$utilsMiddleware"
   ],
   actions: [
     { method: "POST", url: "/api/login", action: "UserController.login" }
@@ -60,6 +60,8 @@ module.exports = {
     { name: "$apiKeyModel" }
   ],
   services: [
+    "$loginService",
+    "$apiKeyService",
     { scope: "singleton", name: "$loginService" },
     { scope: "singleton", name: "$apiKeyService" }
   ],
