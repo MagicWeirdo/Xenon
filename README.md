@@ -108,21 +108,13 @@ module.exports = {
   name: "person",
   mapping: {
     name: String,
-    surname: String,
-    age: Number,
-    male: Boolean,
-    continent: ["Europe", "America", "Asia", "Africa", "Australia", "Antarctica"],
-    photo: Buffer,
-    data: Object
+    surname: String
   },
   options: {
     methods: {
       fullName: function() {
         return this.name + " " + this.surname;
       }
-    },
-    validations: {
-      
     }
   }
 }
