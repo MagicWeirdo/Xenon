@@ -16,6 +16,8 @@ on RESTful backend with static file & template file serve features.
      |- setting.js
   |- files
   |- node_modules
+  |- view
+  |- static
   |- package.json
   |- README.md
   |- app.js
@@ -45,6 +47,7 @@ module.exports = {
     password: "xxx",
     database: "xxx"
   },
+  static_root: "/static/",
   middleware: [
     {name: "RestfulMiddleware"},
     {name: "UtilsMiddleware"}

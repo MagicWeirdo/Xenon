@@ -12,6 +12,7 @@
   "author": "Oliver Hsu",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.5",
     "mysql": "^2.12.0"
   }
 }
