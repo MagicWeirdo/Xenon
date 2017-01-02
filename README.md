@@ -43,27 +43,25 @@ module.exports = {
   database: {
     driver: "mysql",
     host: "127.0.0.0",
+    port: 3306,
     user: "xxx",
     password: "xxx",
     database: "xxx"
   },
   static_root: "/static/",
   middlewares: [
-    "$restfulMiddleware",
-    "$utilsMiddleware"
+    "RestfulMiddleware",
+    "UtilsMiddleware"
   ],
   actions: [
     { method: "POST", url: "/api/login", action: "UserController.login" }
   ],
   models: [
-    { name: "$userModel" },
-    { name: "$apiKeyModel" }
+    "Person"
   ],
   services: [
     "$loginService",
     "$apiKeyService",
-    { scope: "singleton", name: "$loginService" },
-    { scope: "singleton", name: "$apiKeyService" }
   ],
   files: [
     { url: "/", filePath: "template/index.html" },
@@ -94,15 +92,38 @@ module.exports = {
 ## Service Definition
 
 ```sh
-module.exports = function ($userModel) {
-  // return object
+module.exports = {
+  scope: "singleton",
+  name: "$myService",
+  factory: function () {
+    #statements
+  }
 }
 ```
 
 ## Model Definition
 
 ```sh
-module.exports = function ($mysql) {
-  #statements
+module.exports = {
+  name: "person",
+  mapping: {
+    name: String,
+    surname: String,
+    age: Number,
+    male: Boolean,
+    continent: ["Europe", "America", "Asia", "Africa", "Australia", "Antarctica"],
+    photo: Buffer,
+    data: Object
+  },
+  options: {
+    methods: {
+      fullName: function() {
+        return this.name + " " + this.surname;
+      }
+    },
+    validations: {
+      
+    }
+  }
 }
 ```
