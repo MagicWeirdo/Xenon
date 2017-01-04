@@ -40,6 +40,7 @@ module.exports = {
   debug: true,
   hostname: "127.0.0.1",
   port: 80,
+  static_root: "/static/",
   database: {
     driver: "mysql",
     host: "127.0.0.0",
@@ -48,7 +49,6 @@ module.exports = {
     password: "xxx",
     database: "xxx"
   },
-  static_root: "/static/",
   middlewares: [
     "RestfulMiddleware",
     "UtilsMiddleware"
