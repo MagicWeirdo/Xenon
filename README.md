@@ -116,6 +116,15 @@ module.exports = {
         return this.name + " " + this.surname;
       }
     }
+  },
+  association: {
+    hasOne: [
+      { name: "mother", model: "person", option: {...} },
+      { name: "father", model: "father", option: {...} }
+    ],
+    hasMany: [
+      { name: "puppy", model: "dog", extraProps: {...}, opts: {...} }
+    ]
   }
 }
 ```
