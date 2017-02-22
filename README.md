@@ -41,6 +41,17 @@ module.exports = {
   hostname: "127.0.0.1",
   port: 80,
   static_root: "/static/",
+  email: {
+    user: "xxx",
+    password: "xxx",
+    host: "xxx",
+    port: "xxx",
+    ssl: true,
+    tls: false,
+    timeout: "xxx",
+    domain: "xxx",
+    authentication: "xxx"
+  },
   database: {
     driver: "mysql",
     host: "127.0.0.0",
