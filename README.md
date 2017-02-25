@@ -116,20 +116,25 @@ module.exports = {
 
 ```sh
 module.exports = function(orm, db) {
-  db.define("person", {
-    name: String,
-    surname: String,
-    age: Number,
-    male: Boolean,
-    continent: [ "Europe", "America", "Asia", "Africa", "Australia", "Antartica" ],
-    photo: Buffer,
-    data: Object
-  }, {
-    methods: {
-      fullName: function() {
-        return this.name + " " + this.surname;
+  before: function(orm, db) {
+    db.define("person", {
+      name: String,
+      surname: String,
+      age: Number,
+      male: Boolean,
+      continent: [ "Europe", "America", "Asia", "Africa", "Australia", "Antartica" ],
+      photo: Buffer,
+      data: Object
+    }, {
+      methods: {
+        fullName: function() {
+          return this.name + " " + this.surname;
+        }
       }
-    }
-  });
+    });
+  },
+  after: function(orm, db) {
+    
+  }
 };
 ```
