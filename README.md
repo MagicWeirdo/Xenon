@@ -115,27 +115,21 @@ module.exports = {
 ## Model Definition
 
 ```sh
-module.exports = {
-  name: "person",
-  mapping: {
+module.exports = function(orm, db) {
+  db.define("person", {
     name: String,
-    surname: String
-  },
-  options: {
+    surname: String,
+    age: Number,
+    male: Boolean,
+    continent: [ "Europe", "America", "Asia", "Africa", "Australia", "Antartica" ],
+    photo: Buffer,
+    data: Object
+  }, {
     methods: {
       fullName: function() {
         return this.name + " " + this.surname;
       }
     }
-  },
-  association: {
-    hasOne: [
-      { name: "mother", model: "person", option: {...} },
-      { name: "father", model: "father", option: {...} }
-    ],
-    hasMany: [
-      { name: "puppy", model: "dog", extraProps: {...}, opts: {...} }
-    ]
-  }
-}
+  });
+};
 ```
