@@ -12,6 +12,8 @@ on RESTful backend with static file & template file serve features.
      |- models
      |- services
      |- middlewares
+     |- websocket
+        |- websocket.js
   |- config
      |- setting.js
   |- files
@@ -41,6 +43,7 @@ module.exports = {
   hostname: "127.0.0.1",
   port: 80,
   static_root: "/static/",
+  enable_websocket: true,
   email: {
     user: "xxx",
     password: "xxx",
@@ -134,7 +137,14 @@ module.exports = function(orm, db) {
     });
   },
   after: function(orm, db) {
-    
+
   }
 };
+```
+## WebSocket Definition
+
+```sh
+module.exports = function(io) {
+  ...
+}
 ```
